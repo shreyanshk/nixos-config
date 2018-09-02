@@ -35,9 +35,12 @@
     # begin KDE 5 stuff
     ark
     gwenview
+    k3b
+    kcalc
     kdeconnect
     ktorrent
     okular
+    spectacle
     yakuake
     # end KDE 5 stuff
     beets
@@ -49,7 +52,7 @@
     iw
     libreoffice
     mkpasswd
-    neovim
+    neovim # e:environment.variables.EDITOR
     neovim-qt
     python36Packages.pip
     python3
@@ -57,6 +60,8 @@
     tdesktop
     vlc
   ];
+
+  environment.variables = { EDITOR = "nvim"; };
 
   # enable virtualisation
   # virtualisation.virtualbox.host.enable = true;
