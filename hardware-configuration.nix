@@ -9,7 +9,7 @@
     ];
 
   boot.extraModulePackages = [ ];
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "ahci" "rtsx_pci_sdmmc" "sd_mod" "sr_mod" "usb_storage" "xhci_pci" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.kernelParams = [ "acpi_osi=!" "acpi_osi=\"Windows 2009\"" ];
 
@@ -18,7 +18,6 @@
     fsType = "btrfs";
     options = [ "compress=zlib" "discard" "noatime" "nodiratime" ];
   };
-
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/CE48-7CFE";
     fsType = "vfat";

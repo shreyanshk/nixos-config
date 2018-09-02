@@ -33,32 +33,35 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # begin KDE 5 stuff
-    ark
-    gwenview
-    k3b
+    ark # archiving tool
+    gwenview # photo viewer
+    k3b # disk burning tool
     kcalc
     kdeconnect
-    ktorrent
-    okular
-    spectacle
-    yakuake
+    ktorrent # torrent client
+    okular # document viewer
+    spectacle # screenshot utility
+    yakuake # drop down terminal
     # end KDE 5 stuff
     beets
-    firefox
-    gcc
+	file # program for recognizing the type of data contained in a file
+    firefox # browser
+    gcc # compiler
     git
     go
-    hexchat
+    hexchat # IRC client
     iw
     libreoffice
     mkpasswd
-    neovim # e:environment.variables.EDITOR
-    neovim-qt
+    neovim # e:environment.variables.EDITOR; text editor
+    neovim-qt # Qt GUI for neovim
+	ntfs3g # work with Window's NTFS filesystem
     python36Packages.pip
     python3
+	rstudio
     qsyncthingtray
-    tdesktop
-    vlc
+    tdesktop # telegram client
+    vlc # media player
   ];
 
   environment.variables = { EDITOR = "nvim"; };
