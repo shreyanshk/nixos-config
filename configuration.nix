@@ -101,6 +101,7 @@
   services.xserver.desktopManager.plasma5.enable = true;
 
   users = {
+    defaultUserShell = pkgs.zsh;
     mutableUsers = false;
     extraUsers.shreyansh = {
       description = "Shreyansh Jain";
