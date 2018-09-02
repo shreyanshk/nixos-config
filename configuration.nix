@@ -65,8 +65,8 @@
 
   # enable virtualisation
   virtualisation.docker.enable = true;
-  # virtualisation.virtualbox.host.enable = true;
-  # nixpkgs.config.virtualbox.enableExtensionPack = true;
+  virtualisation.virtualbox.host.enable = true;
+  nixpkgs.config.virtualbox.enableExtensionPack = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
