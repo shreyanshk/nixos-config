@@ -10,8 +10,9 @@
       ./hardware-configuration.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
   boot.tmpOnTmpfs = true; # mount /tmp as tmpfs
+
+  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -80,6 +81,7 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  services.fstrim.enable = true;
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "us";
