@@ -64,6 +64,7 @@
   environment.variables = { EDITOR = "nvim"; };
 
   # enable virtualisation
+  virtualisation.docker.enable = true;
   # virtualisation.virtualbox.host.enable = true;
   # nixpkgs.config.virtualbox.enableExtensionPack = true;
 
@@ -105,7 +106,7 @@
     mutableUsers = false;
     extraUsers.shreyansh = {
       description = "Shreyansh Jain";
-      extraGroups = [ "audio" "networkmanager" "vboxusers" "wheel" ];
+      extraGroups = [ "audio" "docker" "networkmanager" "vboxusers" "wheel" ];
       hashedPassword = "$6$KnTjypp3$Ysx5/4XmAVJeXbf7XupX5IgcJF/IinLpH7ivRzNKlH4kYlZDTH6olQTFHi0v54j/o.McK5JVqs580mGj7TSlI/";
       isNormalUser = true;
       uid = 1000;
