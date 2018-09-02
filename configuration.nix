@@ -4,7 +4,12 @@
 
 { config, pkgs, ... }:
 
-{
+let
+	myPyPkgs = python-packages: with python-packages; [
+		jupyter
+	];
+	py3WithPkgs = pkgs.python3.withPackages myPyPkgs;
+in {
 	imports =
 	[ # Include the results of the hardware scan.
 		./hardware-configuration.nix
@@ -56,8 +61,7 @@
 		neovim # e:environment.variables.EDITOR; text editor
 		neovim-qt # Qt GUI for neovim
 		ntfs3g # work with Window's NTFS filesystem
-		python36Packages.pip
-		python3
+		py3WithPkgs
 		rstudio
 		qsyncthingtray
 		tdesktop # telegram client
