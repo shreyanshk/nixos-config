@@ -25,7 +25,10 @@
     options = [ "discard" "noatime" "nodiratime" ];
   };
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
   hardware.bumblebee.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
   hardware.pulseaudio.enable = true;
