@@ -38,6 +38,7 @@
     kdeconnect
     ktorrent
     okular
+    yakuake
     # end KDE 5 stuff
     beets
     firefox
