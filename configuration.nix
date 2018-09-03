@@ -114,6 +114,9 @@ in {
 		'';
 	};
 	services.thermald.enable = true;
+	services.udev.extraRules = ''
+		ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="noop"
+	'';
 	# Enable the X11 windowing system.
 	services.xserver.enable = true;
 	services.xserver.layout = "us";
