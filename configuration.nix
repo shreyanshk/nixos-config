@@ -5,10 +5,18 @@
 { config, pkgs, ... }:
 
 let
+	# Python with packages
 	myPyPkgs = python-packages: with python-packages; [
+		ipython
 		jupyter
 	];
 	py3WithPkgs = pkgs.python3.withPackages myPyPkgs;
+	# RStudio with packages
+	RStudioWithPkgs = with pkgs; rstudioWrapper.override {
+		packages = with rPackages; [
+			ggplot2
+		];
+	};
 in {
 	imports =
 	[ # Include the results of the hardware scan.
@@ -62,7 +70,7 @@ in {
 		neovim-qt # Qt GUI for neovim
 		ntfs3g # work with Window's NTFS filesystem
 		py3WithPkgs
-		rstudio
+		RStudioWithPkgs
 		qsyncthingtray
 		tdesktop # telegram client
 		vlc # media player
