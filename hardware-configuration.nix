@@ -8,6 +8,12 @@
 		<nixpkgs/nixos/modules/installer/scan/not-detected.nix>
 	];
 
+	# i915: enable better power savings
+	# enable_guc_loading=1 and enable_guc_submission=1 are merged into enable_guc=3 since Linux 4.16+
+	# update this when kernel changes to 4.16+
+	boot.extraModprobeConfig = ''
+		options i915 enable_dc=1 enable_fbc=1 enable_guc_loading=1 enable_guc_submission=1 enable_rc6=7 semaphores=1
+	'';
 	boot.extraModulePackages = [ ];
 	boot.initrd.availableKernelModules = [
 		"ahci"
@@ -22,6 +28,7 @@
 		"acpi_backlight=native" # best backlight control method for my computer
 		"acpi_osi=!" # to make Nvidia play nice with Linux
 		"acpi_osi=\"Windows 2009\"" # to make Nvidia play nice with Linux
+		"intel_pstate=skylake_hwp" # this enables Intel's SpeedShift
 	];
 
 	fileSystems."/" = {
