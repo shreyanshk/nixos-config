@@ -104,6 +104,16 @@ in {
 	# services.printing.enable = true;
 
 	services.fstrim.enable = true;
+	services.tlp = {
+		enable = true;
+		# disable sound card power management
+		# causes annoying pops everytime sound card switches state
+		extraConfig = ''
+			SOUND_POWER_SAVE_ON_AC=0
+			SOUND_POWER_SAVE_ON_BAT=0
+		'';
+	};
+	services.thermald.enable = true;
 	# Enable the X11 windowing system.
 	services.xserver.enable = true;
 	services.xserver.layout = "us";
@@ -111,6 +121,7 @@ in {
 
 	# Enable touchpad support.
 	services.xserver.libinput.enable = true;
+	services.xserver.multitouch.enable = true;
 
 	# Enable the KDE Desktop Environment.
 	services.xserver.displayManager.sddm.enable = true;
