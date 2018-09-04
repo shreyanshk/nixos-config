@@ -127,7 +127,13 @@ in {
 	services.xserver.multitouch.enable = true;
 
 	# Enable the KDE Desktop Environment.
-	services.xserver.displayManager.sddm.enable = true;
+	services.xserver.displayManager.sddm = {
+		enable = true;
+		extraConfig = ''
+			[General]
+			InputMethod=
+		''; # disable virtual keyboard
+	};
 	services.xserver.desktopManager.plasma5.enable = true;
 
 	users = {
