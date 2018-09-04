@@ -106,11 +106,15 @@ in {
 	services.fstrim.enable = true;
 	services.tlp = {
 		enable = true;
-		# disable sound card power management
-		# causes annoying pops everytime sound card switches state
 		extraConfig = ''
+			# disable sound card power management
+			# causes annoying pops everytime sound card switches state
 			SOUND_POWER_SAVE_ON_AC=0
 			SOUND_POWER_SAVE_ON_BAT=0
+			# The governers are not set by default
+			# https://github.com/NixOS/nixpkgs/issues/46048
+			CPU_SCALING_GOVERNOR_ON_AC=performance
+			CPU_SCALING_GOVERNOR_ON_BAT=powersave
 		'';
 	};
 	services.thermald.enable = true;
