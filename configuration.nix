@@ -49,29 +49,29 @@ in {
 		ark # archiving tool
 		gwenview # photo viewer
 		k3b # disk burning tool
-		kcalc
-		kdeconnect
+		kcalc # KDE calculator
+		kdeconnect # e: networking.firewall; KDE project to communicate across devices
 		ktorrent # torrent client
 		okular # document viewer
 		spectacle # screenshot utility
 		yakuake # drop down terminal
 		# end KDE 5 stuff
-		beets
+		beets # music library organizer
 		file # program for recognizing the type of data contained in a file
 		firefox # browser
 		gcc # compiler
-		git
-		go
+		git # distributed version control system
+		go # Golang compiler
 		hexchat # IRC client
-		iw
-		libreoffice
-		mkpasswd
+		iw # manipulate WiFi adapters
+		libreoffice # Office suite
+		mkpasswd # to generate hashes for passwords
 		neovim # e:environment.variables.EDITOR; text editor
 		neovim-qt # Qt GUI for neovim
 		ntfs3g # work with Window's NTFS filesystem
-		py3WithPkgs
-		RStudioWithPkgs
-		qsyncthingtray
+		py3WithPkgs # defined in 'let' section
+		RStudioWithPkgs # defined in 'let' section
+		qsyncthingtray # sync files across devices
 		tdesktop # telegram client
 		vlc # media player
 	];
@@ -94,17 +94,22 @@ in {
 	# Enable the OpenSSH daemon.
 	# services.openssh.enable = true;
 
-	# Open ports in the firewall.
 	# networking.firewall.allowedTCPPorts = [ ... ];
 	# networking.firewall.allowedUDPPorts = [ ... ];
-	# Or disable the firewall altogether.
+	networking.firewall.allowedTCPPortRanges = [
+		{ from = 1714; to = 1764; } # KDE Connect ports
+	];
+	networking.firewall.allowedUDPPortRanges = [
+		{ from = 1714; to = 1764; } # KDE Connect ports
+	];
+	# disable the firewall altogether.
 	# networking.firewall.enable = false;
 
 	# Enable CUPS to print documents.
 	# services.printing.enable = true;
 
-	services.fstrim.enable = true;
-	services.tlp = {
+	services.fstrim.enable = true; # discard unused blocks on SSD, maintain performance
+	services.tlp = { # Power management for Linux
 		enable = true;
 		extraConfig = ''
 			# disable sound card power management
@@ -117,10 +122,10 @@ in {
 			CPU_SCALING_GOVERNOR_ON_BAT=powersave
 		'';
 	};
-	services.thermald.enable = true;
+	services.thermald.enable = true; # maintain temperatures
 	services.udev.extraRules = ''
 		ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="noop"
-	'';
+	''; # set noop scheduler for SSDs
 	# Enable the X11 windowing system.
 	services.xserver.enable = true;
 	services.xserver.layout = "us";
