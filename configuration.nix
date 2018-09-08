@@ -2,24 +2,8 @@
 # your system.	Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-
-let
-	# Python with packages
-	myPyPkgs = python-packages: with python-packages; [
-		ipython
-		jupyter
-	];
-	py3WithPkgs = pkgs.python3.withPackages myPyPkgs;
-	# RStudio with packages
-	RStudioWithPkgs = with pkgs; rstudioWrapper.override {
-		packages = with rPackages; [
-			ggplot2
-		];
-	};
-in {
-	imports =
-	[ # Include the results of the hardware scan.
+{ config, pkgs, ... }: {
+	imports = [ # Include the results of the hardware scan.
 		./hardware-configuration.nix
 	];
 
@@ -56,24 +40,15 @@ in {
 		spectacle # screenshot utility
 		yakuake # drop down terminal
 		# end KDE 5 stuff
-		beets # music library organizer
 		file # program for recognizing the type of data contained in a file
-		firefox # browser
 		gcc # compiler
 		git # distributed version control system
-		go # Golang compiler
-		hexchat # IRC client
 		iw # manipulate WiFi adapters
-		libreoffice # Office suite
 		mkpasswd # to generate hashes for passwords
 		neovim # e:environment.variables.EDITOR; text editor
-		neovim-qt # Qt GUI for neovim
+		ncdu # disk utility program
 		ntfs3g # work with Window's NTFS filesystem
-		py3WithPkgs # defined in 'let' section
-		RStudioWithPkgs # defined in 'let' section
-		qsyncthingtray # sync files across devices
-		tdesktop # telegram client
-		vlc # media player
+		tree # recursive directory listing program
 	];
 
 	environment.variables = { EDITOR = "nvim"; };
