@@ -13,6 +13,9 @@
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
 
+	# nice boot splash screen
+	boot.plymouth.enable = true;
+
 	networking.hostName = "invariantNix";
 	networking.networkmanager.enable = true;
 
@@ -25,6 +28,7 @@
 
 	time.timeZone = "Asia/Kolkata";
 
+	nix.buildCores = 0; # run "make" on all available cores during nixos compilations
 	nixpkgs.config.allowUnfree = true;
 	# List packages installed in system profile. To search, run:
 	# $ nix search wget
@@ -64,6 +68,7 @@
 	# programs.mtr.enable = true;
 	# programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 	programs.zsh.enable = true; # e: users.defaultUserShell
+	programs.fish.enable = true;
 
 	# List services that you want to enable:
 
@@ -122,7 +127,7 @@
 	services.xserver.desktopManager.plasma5.enable = true;
 
 	users = {
-		defaultUserShell = pkgs.zsh;
+		defaultUserShell = pkgs.fish;
 		mutableUsers = false;
 		extraUsers.shreyansh = {
 			description = "Shreyansh Jain";
