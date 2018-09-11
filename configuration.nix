@@ -52,6 +52,7 @@
 		neovim # e:environment.variables.EDITOR; text editor
 		ncdu # disk utility program
 		ntfs3g # work with Window's NTFS filesystem
+		powertop # measure computer's power consumption
 		tree # recursive directory listing program
 	];
 
