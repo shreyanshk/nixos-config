@@ -55,7 +55,10 @@
 		tree # recursive directory listing program
 	];
 
-	environment.variables = { EDITOR = "nvim"; };
+	environment.variables = {
+		EDITOR = "nvim";
+		PAGER = "less";
+	};
 
 	# enable virtualisation
 	virtualisation.docker.enable = true;
@@ -67,8 +70,9 @@
 	# programs.bash.enableCompletion = true;
 	# programs.mtr.enable = true;
 	# programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
-	programs.zsh.enable = true; # e: users.defaultUserShell
-	programs.fish.enable = true;
+	programs.fish.enable = true; # e: users.defaultUserShell
+	programs.wireshark.enable = true; # e: users.extraUsers.<name>.extraGroups; wireshark is a packet analyzer.
+	# programs.zsh.enable = true; # e: users.defaultUserShell
 
 	# List services that you want to enable:
 
@@ -131,7 +135,7 @@
 		mutableUsers = false;
 		extraUsers.shreyansh = {
 			description = "Shreyansh Jain";
-			extraGroups = [ "audio" "docker" "networkmanager" "vboxusers" "wheel" ];
+			extraGroups = [ "audio" "docker" "networkmanager" "vboxusers" "wireshark" "wheel" ];
 			hashedPassword = "$6$KnTjypp3$Ysx5/4XmAVJeXbf7XupX5IgcJF/IinLpH7ivRzNKlH4kYlZDTH6olQTFHi0v54j/o.McK5JVqs580mGj7TSlI/";
 			isNormalUser = true;
 			uid = 1000;
