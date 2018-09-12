@@ -12,7 +12,7 @@
 	# enable_guc_loading=1 and enable_guc_submission=1 are merged into enable_guc=3 since Linux 4.16+
 	# update this when kernel changes to 4.16+
 	boot.extraModprobeConfig = ''
-		options i915 enable_dc=1 enable_fbc=1 enable_guc_loading=1 enable_guc_submission=1 enable_rc6=7 semaphores=1
+		options i915 enable_dc=1 enable_fbc=1 enable_rc6=1 semaphores=1 disable_power_well=0 enable_guc_loading=1 enable_guc_submission=1
 	'';
 	boot.extraModulePackages = [ ];
 	boot.initrd.availableKernelModules = [
