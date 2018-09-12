@@ -54,6 +54,7 @@
 		ntfs3g # work with Window's NTFS filesystem
 		powertop # measure computer's power consumption
 		tree # recursive directory listing program
+		unzip # to handle ZIP files
 	];
 
 	environment.variables = {
