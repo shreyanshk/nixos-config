@@ -11,7 +11,7 @@
 
 	# Use the systemd-boot EFI boot loader.
 	boot.loader.systemd-boot.enable = true;
-	boot.loader.efi.canTouchEfiVariables = true;
+	boot.loader.efi.canTouchEfiVariables = true; # modify NVRAM
 
 	# nice boot splash screen
 	boot.plymouth.enable = true;
@@ -29,7 +29,7 @@
 	time.timeZone = "Asia/Kolkata";
 
 	nix.buildCores = 0; # run "make" on all available cores during nixos compilations
-	nixpkgs.config.allowUnfree = true;
+	nixpkgs.config.allowUnfree = true; # for non-FOSS stuff like firmware/GPU drivers
 	# List packages installed in system profile. To search, run:
 	# $ nix search wget
 	environment.systemPackages = with pkgs; [
@@ -38,21 +38,26 @@
 		gwenview # photo viewer
 		k3b # disk burning tool
 		kcalc # KDE calculator
-		kdeconnect # e: networking.firewall; KDE project to communicate across devices
+		kdeconnect # e:networking.firewall; KDE project to communicate across devices
 		ktorrent # torrent client
 		okular # document viewer
 		spectacle # screenshot utility
 		yakuake # drop down terminal
 		# end KDE 5 stuff
+		aria2 # better downloader
+		cudatoolkit # NVIDIA CUDA support software
+		fd # better 'find'
 		file # program for recognizing the type of data contained in a file
 		gcc # compiler
 		git # distributed version control system
+		htop # better 'top'
 		iw # manipulate WiFi adapters
 		mkpasswd # to generate hashes for passwords
-		neovim # e:environment.variables.EDITOR; text editor
 		ncdu # disk utility program
+		neovim # e:environment.variables.EDITOR; text editor
 		ntfs3g # work with Window's NTFS filesystem
 		powertop # measure computer's power consumption
+		tldr # simpler 'man'
 		tree # recursive directory listing program
 		unzip # to handle ZIP files
 	];
@@ -63,8 +68,7 @@
 	};
 
 	# enable virtualisation
-	virtualisation.docker.enable = true;
-	virtualisation.virtualbox.host.enable = true;
+	virtualisation.virtualbox.host.enable = true; # hosted hypervisor
 	nixpkgs.config.virtualbox.enableExtensionPack = true;
 
 	# Some programs need SUID wrappers, can be configured further or are
@@ -72,11 +76,11 @@
 	# programs.bash.enableCompletion = true;
 	# programs.mtr.enable = true;
 	# programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
-	programs.fish.enable = true; # e: users.defaultUserShell
-	programs.wireshark.enable = true; # e: users.extraUsers.<name>.extraGroups; wireshark is a packet analyzer.
-	# programs.zsh.enable = true; # e: users.defaultUserShell
+	programs.fish.enable = true; # e:users.defaultUserShell
+	programs.wireshark.enable = true; # e:users.extraUsers.<name>.extraGroups; wireshark is a packet analyzer.
+	# programs.zsh.enable = true; # e:users.defaultUserShell
 
-	# List services that you want to enable:
+	# List services that you want to enable
 
 	# Enable the OpenSSH daemon.
 	# services.openssh.enable = true;
@@ -134,10 +138,10 @@
 
 	users = {
 		defaultUserShell = pkgs.fish;
-		mutableUsers = false;
+		mutableUsers = false; # enable declarative user management
 		extraUsers.shreyansh = {
 			description = "Shreyansh Jain";
-			extraGroups = [ "audio" "docker" "networkmanager" "vboxusers" "wireshark" "wheel" ];
+			extraGroups = [ "audio" "networkmanager" "vboxusers" "wireshark" "wheel" ];
 			hashedPassword = "$6$KnTjypp3$Ysx5/4XmAVJeXbf7XupX5IgcJF/IinLpH7ivRzNKlH4kYlZDTH6olQTFHi0v54j/o.McK5JVqs580mGj7TSlI/";
 			isNormalUser = true;
 			uid = 1000;
