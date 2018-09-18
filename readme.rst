@@ -1,9 +1,6 @@
-============
-nixos-config
-============
-
-Conventions
------------
+===========================
+NixOS config of my computer
+===========================
 
 1. **(in comments) e: <var>**
         | Commented expr affects expr "var" in some way and this comment is used to mark relationship between them if they are defined at distant places.
