@@ -45,11 +45,13 @@
 		yakuake # drop down terminal
 		# end KDE 5 stuff
 		aria2 # better downloader
+		bat # better 'cat'
 		cryptsetup # work with encrypted volumes
 		cudatoolkit # NVIDIA CUDA support software
 		fd # better 'find'
 		file # program for recognizing the type of data contained in a file
 		gcc # compiler
+		go # Golang compiler
 		git # distributed version control system
 		htop # better 'top'
 		iw # manipulate WiFi adapters
