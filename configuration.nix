@@ -16,7 +16,7 @@
 	# nice boot splash screen
 	boot.plymouth.enable = true;
 
-	networking.hostName = "invariantNix";
+	networking.hostName = "invariant";
 	networking.networkmanager.enable = true;
 
 	# Select internationalisation properties.
