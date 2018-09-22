@@ -28,8 +28,8 @@
 
 	time.timeZone = "Asia/Kolkata";
 
-	nix.buildCores = 0; # run "make" on all available cores during nixos compilations
-	nixpkgs.config.allowUnfree = true; # for non-FOSS stuff like firmware/GPU drivers
+	nix.buildCores = 0; # "make" on all cores during nixos compilations
+	nixpkgs.config.allowUnfree = true; # proprietary drivers/firmware
 	# List packages installed in system profile. To search, run:
 	# $ nix search wget
 	environment.systemPackages = with pkgs; [
@@ -38,7 +38,7 @@
 		gwenview # photo viewer
 		k3b # disk burning tool
 		kcalc # KDE calculator
-		kdeconnect # e:networking.firewall; KDE project to communicate across devices
+		kdeconnect # e:networking.firewall; remote control
 		ktorrent # torrent client
 		okular # document viewer
 		spectacle # screenshot utility
@@ -49,7 +49,7 @@
 		cryptsetup # work with encrypted volumes
 		cudatoolkit # NVIDIA CUDA support software
 		fd # better 'find'
-		file # program for recognizing the type of data contained in a file
+		file # recognize type of data contained in files
 		gcc # compiler
 		go # Golang compiler
 		git # distributed version control system
@@ -60,6 +60,7 @@
 		neovim # e:environment.variables.EDITOR; text editor
 		ntfs3g # work with Window's NTFS filesystem
 		powertop # measure computer's power consumption
+		sshfs-fuse # access filesystem over SSH
 		tldr # simpler 'man'
 		tree # recursive directory listing program
 		unzip # to handle ZIP files
@@ -79,8 +80,9 @@
 	# programs.bash.enableCompletion = true;
 	# programs.mtr.enable = true;
 	# programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+	programs.adb.enable = true; # e:user Groups; Android debugging, ADB
 	programs.fish.enable = true; # e:users.defaultUserShell
-	programs.wireshark.enable = true; # e:users.extraUsers.<name>.extraGroups; wireshark is a packet analyzer.
+	programs.wireshark.enable = true; # e:user Groups; packet analyzer.
 	# programs.zsh.enable = true; # e:users.defaultUserShell
 
 	# List services that you want to enable
@@ -102,12 +104,12 @@
 	# Enable CUPS to print documents.
 	# services.printing.enable = true;
 
-	services.fstrim.enable = true; # discard unused blocks on SSD, maintain performance
+	services.fstrim.enable = true; # maintain SSD performance
 	services.tlp = { # Power management for Linux
 		enable = true;
 		extraConfig = ''
 			# disable sound card power management
-			# causes annoying pops everytime sound card switches state
+			# fix pops when sound card switches state
 			SOUND_POWER_SAVE_ON_AC=0
 			SOUND_POWER_SAVE_ON_BAT=0
 			# The governers are not set by default
@@ -144,7 +146,14 @@
 		mutableUsers = false; # enable declarative user management
 		extraUsers.shreyansh = {
 			description = "Shreyansh Jain";
-			extraGroups = [ "audio" "networkmanager" "vboxusers" "wireshark" "wheel" ];
+			extraGroups = [
+				"adbusers" # use ADB tools
+				"audio" # control audio
+				"networkmanager" # configure network
+				"vboxusers" # virtualbox access
+				"wheel" # superuser access
+				"wireshark" # access wireshark
+			];
 			hashedPassword = "$6$KnTjypp3$Ysx5/4XmAVJeXbf7XupX5IgcJF/IinLpH7ivRzNKlH4kYlZDTH6olQTFHi0v54j/o.McK5JVqs580mGj7TSlI/";
 			isNormalUser = true;
 			uid = 1000;
