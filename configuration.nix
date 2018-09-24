@@ -61,6 +61,7 @@
 		neovim # e:environment.variables.EDITOR; text editor
 		ntfs3g # work with Window's NTFS filesystem
 		powertop # measure computer's power consumption
+		rustup # rust installer
 		sshfs-fuse # access filesystem over SSH
 		tldr # simpler 'man'
 		tree # recursive directory listing program
