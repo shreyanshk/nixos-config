@@ -39,6 +39,7 @@
 		k3b # disk burning tool
 		kcalc # KDE calculator
 		kdeconnect # e:networking.firewall; remote control
+		konversation # IRC client
 		ktorrent # torrent client
 		okular # document viewer
 		spectacle # screenshot utility
