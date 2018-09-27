@@ -56,6 +56,7 @@
 		git # distributed version control system
 		htop # better 'top'
 		iw # manipulate WiFi adapters
+		lsof # list open files
 		mkpasswd # to generate hashes for passwords
 		ncdu # disk utility program
 		neovim # e:environment.variables.EDITOR; text editor
@@ -74,6 +75,7 @@
 	};
 
 	# enable virtualisation
+	virtualisation.docker.enable = true;
 	virtualisation.virtualbox.host.enable = true; # hosted hypervisor
 	nixpkgs.config.virtualbox.enableExtensionPack = true;
 
@@ -151,6 +153,7 @@
 			extraGroups = [
 				"adbusers" # use ADB tools
 				"audio" # control audio
+				"docker" # access docker daemon
 				"networkmanager" # configure network
 				"vboxusers" # virtualbox access
 				"wheel" # superuser access
