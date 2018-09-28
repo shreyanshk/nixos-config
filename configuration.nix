@@ -66,7 +66,8 @@
 		sshfs-fuse # access filesystem over SSH
 		tldr # simpler 'man'
 		tree # recursive directory listing program
-		unzip # to handle ZIP files
+		unrar # read RAR files
+		unzip # read ZIP files
 	];
 
 	environment.variables = {
