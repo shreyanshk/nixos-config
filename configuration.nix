@@ -40,6 +40,7 @@
 		kcalc # KDE calculator
 		kdeconnect # e:networking.firewall; remote control
 		konversation # IRC client
+		krita # graphics editor
 		ktorrent # torrent client
 		okular # document viewer
 		spectacle # screenshot utility
@@ -135,6 +136,9 @@
 	# Enable touchpad support.
 	services.xserver.libinput.enable = true;
 	services.xserver.multitouch.enable = true;
+
+	# Disable xterm
+	services.xserver.desktopManager.xterm.enable = false;
 
 	# Enable the KDE Desktop Environment.
 	services.xserver.displayManager.sddm = {
