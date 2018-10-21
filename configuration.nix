@@ -50,6 +50,8 @@
 		bat # better 'cat'
 		cryptsetup # work with encrypted volumes
 		cudatoolkit # NVIDIA CUDA support software
+		darkhttpd # fast HTTP 1.1 static server
+		exfat # handle exfat filesystem
 		fd # better 'find'
 		file # recognize type of data contained in files
 		gcc # compiler
