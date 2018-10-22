@@ -32,12 +32,12 @@
 	];
 
 	fileSystems."/" = {
-		device = "/dev/disk/by-uuid/6d6337fb-7d91-4d88-ab42-9b0a2dd5be8e";
+		device = "/dev/disk/by-partlabel/NixOS";
 		fsType = "btrfs";
 		options = [ "compress=zlib" "discard" "noatime" "nodiratime" ];
 	};
 	fileSystems."/boot" = {
-		device = "/dev/disk/by-uuid/CE48-7CFE";
+		device = "/dev/disk/by-partlabel/EFI";
 		fsType = "vfat";
 		options = [ "discard" "noatime" "nodiratime" ];
 	};
@@ -54,6 +54,6 @@
 	powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
 	swapDevices = [
-		{ device = "/dev/disk/by-uuid/130bace6-c8ff-4a26-b842-4001b2829b33"; }
+		{ device = "/dev/disk/by-partlabel/Swap"; }
 	];
 }
