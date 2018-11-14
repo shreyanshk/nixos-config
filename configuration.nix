@@ -57,6 +57,7 @@
 		gcc # compiler
 		go # Golang compiler
 		git # distributed version control system
+		gnumake # build automation tool
 		htop # better 'top'
 		iw # manipulate WiFi adapters
 		lsof # list open files
