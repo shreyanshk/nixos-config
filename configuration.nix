@@ -16,17 +16,12 @@
 	# nice boot splash screen
 	boot.plymouth.enable = true;
 
-	networking.hostName = "invariant";
-	networking.networkmanager.enable = true;
-
 	# Select internationalisation properties.
 	# i18n = {
 	#   consoleFont = "Lat2-Terminus16";
 	#   consoleKeyMap = "us";
 	#   defaultLocale = "en_US.UTF-8";
 	# };
-
-	time.timeZone = "Asia/Kolkata";
 
 	nix.buildCores = 0; # "make" on all cores during nixos compilations
 	nixpkgs.config.allowUnfree = true; # proprietary drivers/firmware
@@ -84,11 +79,6 @@
 		noto-fonts-emoji
 	];
 
-	environment.variables = {
-		EDITOR = "nvim";
-		PAGER = "less";
-	};
-
 	# enable virtualisation
 	virtualisation.docker.enable = true;
 	virtualisation.virtualbox.host = { # hosted hypervisor
@@ -106,11 +96,8 @@
 	programs.wireshark.enable = true; # e:user Groups; packet analyzer.
 	# programs.zsh.enable = true; # e:users.defaultUserShell
 
-	# List services that you want to enable
-
-	# Enable the OpenSSH daemon.
-	# services.openssh.enable = true;
-
+	networking.hostName = "invariant";
+	networking.networkmanager.enable = true;
 	# networking.firewall.allowedTCPPorts = [ ... ];
 	# networking.firewall.allowedUDPPorts = [ ... ];
 	networking.firewall.allowedTCPPortRanges = [
@@ -121,6 +108,11 @@
 	];
 	# disable the firewall altogether.
 	# networking.firewall.enable = false;
+
+	# List services that you want to enable
+
+	# Enable the OpenSSH daemon.
+	# services.openssh.enable = true;
 
 	# Enable CUPS to print documents.
 	# services.printing.enable = true;
@@ -184,6 +176,14 @@
 			uid = 1000;
 		};
 	};
+
+	environment.variables = {
+		EDITOR = "nvim";
+		PAGER = "less";
+	};
+
+	time.timeZone = "Asia/Kolkata";
+
 	# This value determines the NixOS release with which your system is to be
 	# compatible, in order to avoid breaking some software such as database
 	# servers. You should change this only after NixOS release notes say you
