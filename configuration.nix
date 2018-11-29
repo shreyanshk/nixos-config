@@ -74,6 +74,16 @@
 		unzip # read ZIP files
 	];
 
+	# font being replaced is in comment
+	fonts.fonts = with pkgs; [
+		caladea # Cambria
+		carlito # Calibri
+		hack-font
+		liberation_ttf # Times New Roman, Arial, Courier New
+		noto-fonts
+		noto-fonts-emoji
+	];
+
 	environment.variables = {
 		EDITOR = "nvim";
 		PAGER = "less";
