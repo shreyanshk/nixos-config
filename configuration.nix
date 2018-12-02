@@ -80,7 +80,10 @@
 	];
 
 	# enable virtualisation
-	virtualisation.docker.enable = true;
+	virtualisation.docker = { # deploy apps with containers
+		enable = true;
+		# liveRestore = false;
+	};
 	virtualisation.virtualbox.host = { # hosted hypervisor
 		enable = true;
 		enableExtensionPack = true;
@@ -149,6 +152,7 @@
 
 	# Enable the KDE Desktop Environment.
 	services.xserver.displayManager.sddm = {
+		autoNumlock = true;
 		enable = true;
 		extraConfig = ''
 			[General]
