@@ -24,6 +24,7 @@
 	boot.kernelModules = [ "kvm-intel" ];
 	boot.kernelParams = [
 		"acpi_backlight=native" # best backlight control method for my computer
+		# https://github.com/Bumblebee-Project/Bumblebee/issues/764#issuecomment-234494238
 		"acpi_osi=!" # to make Nvidia play nice with Linux
 		"acpi_osi=\"Windows 2009\"" # to make Nvidia play nice with Linux
 		"intel_pstate=skylake_hwp" # this enables Intel's SpeedShift
