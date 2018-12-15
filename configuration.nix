@@ -86,7 +86,7 @@
 	};
 	virtualisation.virtualbox.host = { # hosted hypervisor
 		enable = true;
-		enableExtensionPack = true;
+		# enableExtensionPack = true;
 	};
 
 	# Some programs need SUID wrappers, can be configured further or are
