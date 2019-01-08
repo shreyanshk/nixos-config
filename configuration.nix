@@ -64,6 +64,7 @@
 		rustup # rust installer
 		sshfs-fuse # access filesystem over SSH
 		tldr # simpler 'man'
+		traceroute # trace path to node on network
 		tree # recursive directory listing program
 		unrar # read RAR files
 		unzip # read ZIP files
@@ -84,10 +85,7 @@
 		enable = true;
 		# liveRestore = false;
 	};
-	virtualisation.virtualbox.host = { # hosted hypervisor
-		enable = true;
-		# enableExtensionPack = true;
-	};
+	virtualisation.libvirtd.enable = true;
 
 	# Some programs need SUID wrappers, can be configured further or are
 	# started in user sessions.
@@ -119,6 +117,7 @@
 
 	# Enable CUPS to print documents.
 	# services.printing.enable = true;
+	# services.printing.drivers = [ pkgs.canon-cups-ufr2 ];
 
 	services.fstrim.enable = true; # maintain SSD performance
 	services.tlp = { # Power management for Linux
@@ -167,13 +166,13 @@
 		extraUsers.shreyansh = {
 			description = "Shreyansh Jain";
 			extraGroups = [
-				"adbusers" # use ADB tools
-				"audio" # control audio
+				"adbusers" # enable Android Dev tools
+				"audio" # control audio settings
 				"docker" # access docker daemon
-				"networkmanager" # configure network
-				"vboxusers" # virtualbox access
-				"wheel" # superuser access
-				"wireshark" # access wireshark
+				"libvirtd" # access libvert for virt-manager
+				"networkmanager" # configure network settings
+				"wheel" # superuser/root access
+				"wireshark" # for wireshark + packet capture
 			];
 			hashedPassword = "$6$KnTjypp3$Ysx5/4XmAVJeXbf7XupX5IgcJF/IinLpH7ivRzNKlH4kYlZDTH6olQTFHi0v54j/o.McK5JVqs580mGj7TSlI/";
 			isNormalUser = true;
