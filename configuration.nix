@@ -68,6 +68,7 @@
 		tree # recursive directory listing program
 		unrar # read RAR files
 		unzip # read ZIP files
+		usbutils # tools for USB devices
 	];
 
 	# font being replaced is in comment
@@ -153,10 +154,6 @@
 	services.xserver.displayManager.sddm = {
 		autoNumlock = true;
 		enable = true;
-		extraConfig = ''
-			[General]
-			InputMethod=
-		''; # disable virtual keyboard
 	};
 	services.xserver.desktopManager.plasma5.enable = true;
 
