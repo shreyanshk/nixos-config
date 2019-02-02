@@ -7,24 +7,14 @@
 		./hardware-configuration.nix
 	];
 
-	boot.tmpOnTmpfs = true; # mount /tmp as tmpfs
-
 	# Use the systemd-boot EFI boot loader.
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true; # modify NVRAM
 
-	# nice boot splash screen
-	boot.plymouth.enable = true;
+	boot.plymouth.enable = true; # nice boot splash screen
 
-	# Select internationalisation properties.
-	# i18n = {
-	#   consoleFont = "Lat2-Terminus16";
-	#   consoleKeyMap = "us";
-	#   defaultLocale = "en_US.UTF-8";
-	# };
+	boot.tmpOnTmpfs = true; # mount /tmp as tmpfs
 
-	nix.buildCores = 0; # "make" on all cores during nixos compilations
-	nixpkgs.config.allowUnfree = true; # proprietary drivers/firmware
 	# List packages installed in system profile. To search, run:
 	# $ nix search wget
 	environment.systemPackages = with pkgs; [
@@ -71,6 +61,11 @@
 		usbutils # tools for USB devices
 	];
 
+	environment.variables = {
+		EDITOR = "nvim";
+		PAGER = "less";
+	};
+
 	# font being replaced is in comment
 	fonts.fonts = with pkgs; [
 		caladea # Cambria
@@ -81,25 +76,13 @@
 		noto-fonts-emoji
 	];
 
-	# enable virtualisation
-	virtualisation.docker = { # deploy apps with containers
+	# default pulseaudio doesn't support bluetooth; use full package
+	hardware.pulseaudio = {
 		enable = true;
-		# liveRestore = false;
+		package = pkgs.pulseaudioFull;
 	};
-	virtualisation.libvirtd.enable = true;
-
-	# Some programs need SUID wrappers, can be configured further or are
-	# started in user sessions.
-	# programs.bash.enableCompletion = true;
-	# programs.mtr.enable = true;
-	# programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
-	programs.adb.enable = true; # e:user Groups; Android debugging, ADB
-	programs.fish.enable = true; # e:users.defaultUserShell
-	programs.wireshark.enable = true; # e:user Groups; packet analyzer.
-	# programs.zsh.enable = true; # e:users.defaultUserShell
 
 	networking.hostName = "invariant";
-	networking.networkmanager.enable = true;
 	# networking.firewall.allowedTCPPorts = [ ... ];
 	# networking.firewall.allowedUDPPorts = [ ... ];
 	networking.firewall.allowedTCPPortRanges = [
@@ -110,12 +93,23 @@
 	];
 	# disable the firewall altogether.
 	# networking.firewall.enable = false;
+	networking.networkmanager.enable = true;
+
+	nix.buildCores = 0; # "make" on all cores during nixos compilations
+	nixpkgs.config.allowUnfree = true; # proprietary drivers/firmware
+
+	# Some programs need SUID wrappers, can be configured further or are
+	# started in user sessions.
+	# programs.bash.enableCompletion = true;
+	# programs.mtr.enable = true;
+	# programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+	programs.adb.enable = true; # e:user Groups; Android debugging, ADB
+	programs.fish.enable = true; # e:users.defaultUserShell
+	programs.wireshark.enable = true; # e:user Groups; packet analyzer.
 
 	# List services that you want to enable
-
 	# Enable the OpenSSH daemon.
 	# services.openssh.enable = true;
-
 	# Enable CUPS to print documents.
 	# services.printing.enable = true;
 	# services.printing.drivers = [ pkgs.canon-cups-ufr2 ];
@@ -138,24 +132,24 @@
 	services.udev.extraRules = ''
 		ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="noop"
 	''; # set noop scheduler for SSDs
+
 	# Enable the X11 windowing system.
 	services.xserver.enable = true;
 	services.xserver.layout = "us";
 	services.xserver.xkbOptions = "eurosign:e";
 
-	# Enable touchpad support.
-	services.xserver.libinput.enable = true;
-	services.xserver.multitouch.enable = true;
-
-	# Disable xterm
-	services.xserver.desktopManager.xterm.enable = false;
-
 	# Enable the KDE Desktop Environment.
+	services.xserver.desktopManager.plasma5.enable = true;
 	services.xserver.displayManager.sddm = {
 		autoNumlock = true;
 		enable = true;
 	};
-	services.xserver.desktopManager.plasma5.enable = true;
+
+	# Enable touchpad support.
+	services.xserver.libinput.enable = true;
+	services.xserver.multitouch.enable = true;
+
+	time.timeZone = "Asia/Kolkata";
 
 	users = {
 		defaultUserShell = pkgs.fish;
@@ -177,12 +171,12 @@
 		};
 	};
 
-	environment.variables = {
-		EDITOR = "nvim";
-		PAGER = "less";
+	# enable virtualisation
+	virtualisation.docker = { # deploy apps with containers
+		enable = true;
+		# liveRestore = false;
 	};
-
-	time.timeZone = "Asia/Kolkata";
+	virtualisation.libvirtd.enable = true;
 
 	# This value determines the NixOS release with which your system is to be
 	# compatible, in order to avoid breaking some software such as database
