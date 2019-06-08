@@ -23,7 +23,7 @@
 		gwenview # photo viewer
 		k3b # disk burning tool
 		kcalc # KDE calculator
-		kdeconnect # e:networking.firewall; remote control
+		kdeconnect # e:firewall; remote control
 		konversation # IRC client
 		krita # graphics editor
 		ktorrent # torrent client
@@ -53,6 +53,7 @@
 		powertop # measure computer's power consumption
 		rustup # rust installer
 		sshfs-fuse # access filesystem over SSH
+		syncthing # e:firewall opensource P2P file sync
 		tldr # simpler 'man'
 		traceroute # trace path to node on network
 		tree # recursive directory listing program
@@ -83,7 +84,9 @@
 	};
 
 	networking.hostName = "invariant";
-	# networking.firewall.allowedTCPPorts = [ ... ];
+	networking.firewall.allowedTCPPorts = [
+		22000 # Syncthing port
+	];
 	# networking.firewall.allowedUDPPorts = [ ... ];
 	networking.firewall.allowedTCPPortRanges = [
 		{ from = 1714; to = 1764; } # KDE Connect ports
