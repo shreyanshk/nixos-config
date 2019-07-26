@@ -8,7 +8,7 @@
 
 	# i915: enable better power savings
 	boot.extraModprobeConfig = ''
-		options i915 enable_dc=1 enable_fbc=1 enable_rc6=1 semaphores=1 disable_power_well=0 enable_guc=3
+		options i915 enable_dc=1 enable_fbc=1 disable_power_well=0 enable_guc=3
 	'';
 	boot.extraModulePackages = [ ];
 	boot.initrd.availableKernelModules = [
