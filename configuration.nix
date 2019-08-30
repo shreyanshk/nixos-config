@@ -152,7 +152,7 @@
 	services.xserver.libinput.enable = true;
 	services.xserver.multitouch.enable = true;
 
-	time.timeZone = "Asia/Kolkata";
+	time.timeZone = "Europe/Paris";
 
 	users = {
 		defaultUserShell = pkgs.fish;
