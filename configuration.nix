@@ -25,6 +25,7 @@
 		kcalc # KDE calculator
 		kdeconnect # e:firewall; remote control
 		konversation # IRC client
+		krdc # remote desktop client
 		krita # graphics editor
 		ktorrent # torrent client
 		okular # document viewer
