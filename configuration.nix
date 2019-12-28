@@ -18,6 +18,9 @@
 	# List packages installed in system profile. To search, run:
 	# $ nix search wget
 	environment.systemPackages = with pkgs; [
+		libsForQt5.qtstyleplugin-kvantum
+		papirus-icon-theme
+		arc-kde-theme
 		# begin KDE 5 stuff
 		ark # archiving tool
 		gwenview # photo viewer
