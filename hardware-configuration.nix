@@ -22,6 +22,8 @@
 			"xhci_pci"
 		];
 
+		kernelPackages = pkgs.linuxPackages_latest;
+
 		kernelModules = [ "kvm-intel" ];
 
 		kernelParams = [
