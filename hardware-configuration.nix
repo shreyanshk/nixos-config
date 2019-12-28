@@ -6,27 +6,32 @@
 		<nixpkgs/nixos/modules/installer/scan/not-detected.nix>
 	];
 
-	# i915: enable better power savings
-	boot.extraModprobeConfig = ''
-		options i915 enable_dc=1 enable_fbc=1 disable_power_well=0 enable_guc=3
-	'';
-	boot.extraModulePackages = [ ];
-	boot.initrd.availableKernelModules = [
-		"ahci"
-		"rtsx_pci_sdmmc"
-		"sd_mod"
-		"sr_mod"
-		"usb_storage"
-		"xhci_pci"
-	];
-	boot.kernelModules = [ "kvm-intel" ];
-	boot.kernelParams = [
-		"acpi_backlight=native" # best backlight control method for my computer
-		# https://github.com/Bumblebee-Project/Bumblebee/issues/764#issuecomment-234494238
-		"acpi_osi=!" # to make Nvidia play nice with Linux
-		"acpi_osi=\"Windows 2009\"" # to make Nvidia play nice with Linux
-		"intel_pstate=skylake_hwp" # this enables Intel's SpeedShift
-	];
+	boot = {
+		# i915: enable better power savings
+		# psmouse: for touchpad
+		extraModprobeConfig = ''
+			options i915 enable_dc=1 enable_fbc=1 disable_power_well=0 enable_guc=3
+		'';
+
+		initrd.availableKernelModules = [
+			"ahci"
+			"rtsx_pci_sdmmc"
+			"sd_mod"
+			"sr_mod"
+			"usb_storage"
+			"xhci_pci"
+		];
+
+		kernelModules = [ "kvm-intel" ];
+
+		kernelParams = [
+			"acpi_backlight=native" # best backlight control method for my computer
+			# https://github.com/Bumblebee-Project/Bumblebee/issues/764#issuecomment-234494238
+			"acpi_osi=!" # to make Nvidia play nice with Linux
+			"acpi_osi=\"Windows 2009\"" # to make Nvidia play nice with Linux
+			"intel_pstate=skylake_hwp" # this enables Intel's SpeedShift
+		];
+	};
 
 	fileSystems."/" = {
 		device = "/dev/disk/by-partlabel/NixOS";
