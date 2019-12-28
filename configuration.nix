@@ -151,7 +151,6 @@
 
 	# Enable touchpad support.
 	services.xserver.libinput.enable = true;
-	services.xserver.multitouch.enable = true;
 
 	time.timeZone = "Europe/Paris";
 
