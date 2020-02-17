@@ -7,13 +7,15 @@
 		./hardware-configuration.nix
 	];
 
+	# /tmp is on disk; clean it on every boot
+	boot.cleanTmpDir = true;
+
 	# Use the systemd-boot EFI boot loader.
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true; # modify NVRAM
 
 	boot.plymouth.enable = true; # nice boot splash screen
 
-	boot.tmpOnTmpfs = true; # mount /tmp as tmpfs
 
 	# List packages installed in system profile. To search, run:
 	# $ nix search wget
