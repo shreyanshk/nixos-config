@@ -51,6 +51,7 @@
 		gnumake # build automation tool
 		htop # better 'top'
 		iw # manipulate WiFi adapters
+		krb5 # kerberos auth client
 		lsof # list open files
 		mkpasswd # to generate hashes for passwords
 		ncdu # disk utility program
@@ -60,7 +61,7 @@
 		rustup # rust installer
 		sshfs-fuse # access filesystem over SSH
 		syncthing # e:firewall opensource P2P file sync
-		tldr # simpler 'man'
+		tealdeer # simpler 'man'
 		traceroute # trace path to node on network
 		tree # recursive directory listing program
 		unrar # read RAR files
