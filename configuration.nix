@@ -52,6 +52,8 @@
 		git # distributed version control system
 		gnumake # build automation tool
 		htop # better 'top'
+		hunspell
+		hunspellDicts.en-us
 		iw # manipulate WiFi adapters
 		krb5 # kerberos auth client
 		lsof # list open files
