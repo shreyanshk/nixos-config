@@ -29,6 +29,8 @@
 		k3b # disk burning tool
 		kcalc # KDE calculator
 		kdeconnect # e:firewall; remote control
+		kmail # email client
+		kdeApplications.kmail-account-wizard # email account wizard
 		konversation # IRC client
 		krdc # remote desktop client
 		krita # graphics editor
