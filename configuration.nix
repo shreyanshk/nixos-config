@@ -31,6 +31,7 @@
 		kdeconnect # e:firewall; remote control
 		kmail # email client
 		kdeApplications.kmail-account-wizard # email account wizard
+		kdeApplications.kdepim-addons
 		konversation # IRC client
 		krdc # remote desktop client
 		krita # graphics editor
