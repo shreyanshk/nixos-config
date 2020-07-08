@@ -111,7 +111,7 @@
 		];
 	};
 	# disable the firewall altogether.
-	# networking.firewall.enable = false;
+	networking.firewall.enable = true;
 	networking.networkmanager.enable = true;
 
 	nix.buildCores = 0; # "make" on all cores during nixos compilations
