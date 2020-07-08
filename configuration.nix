@@ -96,16 +96,18 @@
 	};
 
 	networking.hostName = "invariant";
-	networking.firewall.allowedTCPPorts = [
-		22000 # Syncthing port
-	];
-	# networking.firewall.allowedUDPPorts = [ ... ];
-	networking.firewall.allowedTCPPortRanges = [
-		{ from = 1714; to = 1764; } # KDE Connect ports
-	];
-	networking.firewall.allowedUDPPortRanges = [
-		{ from = 1714; to = 1764; } # KDE Connect ports
-	];
+	# networking.firewall.;
+	networking.firewall = {
+		allowedTCPPorts = [
+			22000 # Syncthing port
+		];
+		allowedTCPPortRanges = [
+			{ from = 1714; to = 1764; } # KDE Connect ports
+		];
+		allowedUDPPortRanges = [
+			{ from = 1714; to = 1764; } # KDE Connect ports
+		];
+	};
 	# disable the firewall altogether.
 	# networking.firewall.enable = false;
 	networking.networkmanager.enable = true;
