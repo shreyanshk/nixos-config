@@ -95,6 +95,8 @@
 		package = pkgs.pulseaudioFull;
 	};
 
+	i18n.defaultLocale = "en_IN.utf8";
+
 	networking.hostName = "invariant";
 	# networking.firewall.;
 	networking.firewall = {
